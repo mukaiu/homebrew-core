@@ -3,8 +3,8 @@ class Dxpy < Formula
 
   desc "DNAnexus toolkit utilities and platform API bindings for Python"
   homepage "https://github.com/dnanexus/dx-toolkit"
-  url "https://files.pythonhosted.org/packages/79/8e/e26977a5f918cfa63fdc3364ca2b2784a6a3b4824d0e1e48e43236e02291/dxpy-0.401.0.tar.gz"
-  sha256 "1f8c09aa191941210c4371fdad4566ff9c9a689b0f72ca9a09a9a233207e880b"
+  url "https://files.pythonhosted.org/packages/0b/b8/b25a425d2a31dd8324b6b356d06c33ccfe6a1a80518e5e0d4d6f6addf0b1/dxpy-0.402.0.tar.gz"
+  sha256 "ae3d43ac10b54162b2b51e646e3054d9824af251f771f2a846776087141e9198"
   license "Apache-2.0"
 
   bottle do
@@ -16,17 +16,18 @@ class Dxpy < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:  "5bb51069fde0160143d86cb3d15d1881ddcb426f415d87b6a924c47e971b1c3f"
   end
 
-  depends_on "certifi"
-  depends_on "cryptography"
+  depends_on "certifi" => :no_linkage
+  depends_on "cryptography" => :no_linkage
+  depends_on "python-awscrt" => :no_linkage
   depends_on "python@3.14"
 
   uses_from_macos "libffi"
 
   on_macos do
-    depends_on "readline"
+    depends_on "readline" => :no_linkage
   end
 
-  pypi_packages exclude_packages: ["cryptography", "certifi"]
+  pypi_packages exclude_packages: %w[awscrt cryptography certifi]
 
   resource "argcomplete" do
     url "https://files.pythonhosted.org/packages/38/61/0b9ae6399dd4a58d8c1b1dc5a27d6f2808023d0b5dd3104bb99f45a33ff6/argcomplete-3.6.3.tar.gz"
