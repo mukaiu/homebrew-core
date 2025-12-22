@@ -4,6 +4,7 @@ class Fennel < Formula
   url "https://github.com/bakpakin/Fennel/archive/refs/tags/1.6.0.tar.gz"
   sha256 "e1f0e457629aedb1e477140667d50297c52913b6cdcf150701795b7717f9ebec"
   license "MIT"
+  revision 1
 
   bottle do
     sha256 cellar: :any_skip_relocation, all: "552c33e11ffe95043577951448cfb2a281100211181140ba6de4bd1360366bda"
