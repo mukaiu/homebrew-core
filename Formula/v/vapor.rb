@@ -7,10 +7,11 @@ class Vapor < Formula
   head "https://github.com/vapor/toolbox.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "ad33e861b01620717b6a38a87ff83fe4b79e3447067be1eede4db6d2fa544bc0"
-    sha256 cellar: :any,                 arm64_sequoia: "9db6e2d0f5e2c9d5dea8f930db379e2f8a899d5af09f402d29521074cb05afdd"
-    sha256                               arm64_linux:   "b91ac9e335b8342682cf2032ea9a91336c870f01ebad067ce2bb1523ada305aa"
-    sha256                               x86_64_linux:  "7d4caa94d7be2095ee335b2c954bea42d308e4f79aa641bf4d345671bb8445f1"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "0b7badbe8dc247d8711759c98c039f5ac2b606177482d8de73b54d6067ec9cfe"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "fda51b3a3a414b157f4907120e23cf7dd7dae9c20020f182934a9fc7cffeec27"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "28ef956bc555e48cd0a6a3aa2123b1d0d8ffe3375f9f9e31d5bbf8741f8f4aab"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3ff2a31edb179938c3463129948bb4ab6cf2f017596349bcee15eab0d831bd7e"
   end
 
   depends_on xcode: ["26.0", :build]
