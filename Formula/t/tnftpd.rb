@@ -49,9 +49,6 @@ class Tnftpd < Formula
   end
 
   test do
-    # Errno::EIO: Input/output error @ io_fillbuf - fd:5 /dev/pts/0
-    return if OS.linux? && ENV["HOMEBREW_GITHUB_ACTIONS"]
-
     # running a whole server, connecting, and so forth is a bit clunky and hard
     # to write properly so...
     require "pty"
