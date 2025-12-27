@@ -21,14 +21,25 @@ class Fedify < Formula
     system "deno", "task", "codegen"
     system "deno", "compile", "--allow-all", "--output=#{bin/"fedify"}", "packages/cli/src/mod.ts"
     generate_completions_from_executable(bin/"fedify", "completions")
+    return if OS.mac?
+
+    if OS.linux? && build.bottle?
+      cp bin/"fedify", prefix
+      Utils::Gzip.compress(prefix/"fedify")
+    end
+  end
+
+  def post_install
+    if (prefix/"fedify.gz").exist?
+      system "gunzip", prefix/"fedify.gz"
+      bin.install prefix/"fedify"
+      (bin/"fedify").chmod 0755
+    end
   end
 
   test do
-    # Skip test on Linux CI due to environment-specific failures that don't occur in local testing.
-    # This test passes on macOS CI and all local environments (including Linux).
-    return if OS.linux? && ENV["HOMEBREW_GITHUB_ACTIONS"]
-
-    version_output = shell_output "NO_COLOR=1 #{bin}/fedify --version"
+    ENV["NO_COLOR"] = "1"
+    version_output = shell_output("#{bin}/fedify --version")
     assert_equal "fedify #{version}", version_output.strip
 
     json = shell_output "#{bin}/fedify lookup -e @homebrew@fosstodon.org"
