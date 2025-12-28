@@ -42,9 +42,6 @@ class Dissent < Formula
   end
 
   test do
-    # Fails in Linux CI with "Failed to open display"
-    return if OS.linux? && ENV["HOMEBREW_GITHUB_ACTIONS"]
-
     # dissent is a GUI application
     system bin/"dissent", "--help"
   end
