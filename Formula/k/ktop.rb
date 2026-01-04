@@ -1,20 +1,18 @@
 class Ktop < Formula
   desc "Top-like tool for your Kubernetes clusters"
   homepage "https://github.com/vladimirvivien/ktop"
-  url "https://github.com/vladimirvivien/ktop/archive/refs/tags/v0.4.1.tar.gz"
-  sha256 "ea3834ace7a60c6aa43eec18e53239df672d1bff0afba96c3f4564c6f334043f"
+  url "https://github.com/vladimirvivien/ktop/archive/refs/tags/v0.5.1.tar.gz"
+  sha256 "857bbe49ee0942e3050836b5fb44d41c97c44fca0aa27b3e2a0c7db381558e66"
   license "Apache-2.0"
   head "https://github.com/vladimirvivien/ktop.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "252307b332540ba696c6505029238c94612545818e7e83e86bcc00377a26bf8b"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "027dd9fe6e8c9262a6f176f434ae26498d648e301228fb5175b3e14f8c38bdd6"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d9bf858232d6da1e26d1b2a1c3686212d271699c9911559ed2ca3854b417e90b"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "2c1af4cffda80d7b6912272713b2ea7f6d2ec8c0f8b88309a858b3d4d138d959"
-    sha256 cellar: :any_skip_relocation, sonoma:        "80278e550005bf8f91466e8c2d35c5cb5ffe56ecdb52ca431406fa28c9c96307"
-    sha256 cellar: :any_skip_relocation, ventura:       "32a5f021955cf7b35de292db2999852766058af5103e4aead50fe3b92dd2722a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "60bc6e5ddbbbace74155a624d1aba80ef07e7757743ea367af8c53ab3fb42125"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bf02a77cf9e4d122b1006d5a60a4a1c182f7f5dc48ea1df7e2149c6c27c65faf"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "965b3c0fab2d3c40e51a15148ce255bc2c7bbbb5ab0c06012331d3cd72f4864f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "471efd5f63a8ef823a37f54a59cf55b5f7fcd66fb9469d9752c1a1e592c1e465"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "a0fd7bd1c569d0ce3928923e690fd271ff9765d341e6f1b422a443c80dff24a8"
+    sha256 cellar: :any_skip_relocation, sonoma:        "2ab98cef19bf4172ace8c053081931206fca8d59bcc32d162685c9639c684b55"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "5881e3f70b887d6c75b0283fe3cb8a40f962a32a1c6ef3fd85c704d94628cdb7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e27109281d0a4d4c36a98f640c925e1820bc31394eb5a0181ced7727e700b55b"
   end
 
   depends_on "go" => :build

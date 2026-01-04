@@ -1,19 +1,18 @@
 class Doggo < Formula
   desc "Command-line DNS Client for Humans"
   homepage "https://doggo.mrkaran.dev/"
-  url "https://github.com/mr-karan/doggo/archive/refs/tags/v1.1.3.tar.gz"
-  sha256 "d1bca6ecd8d245e940528b6dba645c5a2e5f6293a3901d5b9166834e0aff4da5"
+  url "https://github.com/mr-karan/doggo/archive/refs/tags/v1.1.4.tar.gz"
+  sha256 "697d21704aba1425d09730d3aa811e51c53ef3e912fef1da1d9f5f8005dea5f8"
   license "GPL-3.0-or-later"
   head "https://github.com/mr-karan/doggo.git", branch: "main"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "04ed8b12923f3746f5b31fffc1066bc2df35a8e593a9450da18414509a9bc16b"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "04ed8b12923f3746f5b31fffc1066bc2df35a8e593a9450da18414509a9bc16b"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "04ed8b12923f3746f5b31fffc1066bc2df35a8e593a9450da18414509a9bc16b"
-    sha256 cellar: :any_skip_relocation, sonoma:        "7b26db6470789b2a22a6e2e059b55e3d23b05afa3ded87521ca2c3e5fa717ee0"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "540ceaa283366547bdcacdac13e93a599464b56f79dc44c2220eb1dafafade71"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4fb0555b6f8e7361987ab1fd5028a385d1bb21201e26d2db4c39a5741fc84349"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "252998cec453ade622f0350d8149f2304203dceac12ade3f38c0a021b98356f9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "252998cec453ade622f0350d8149f2304203dceac12ade3f38c0a021b98356f9"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "252998cec453ade622f0350d8149f2304203dceac12ade3f38c0a021b98356f9"
+    sha256 cellar: :any_skip_relocation, sonoma:        "629af6683741fb3d7c7897887b71a87b3abf7610a8fab458e5ece99720f22dff"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "945d1b073bf7bec8628f9d42f3168449f7b413f7dd14780cf06ccdc9af2d23d0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d545236aecc498201400fe1509c8dc00fbe355d9fcb20a61c91426fd20b5879d"
   end
 
   depends_on "go" => :build
@@ -22,7 +21,7 @@ class Doggo < Formula
     ldflags = "-s -w -X main.buildVersion=#{version} -X main.buildDate=#{time.iso8601}"
     system "go", "build", *std_go_args(ldflags:), "./cmd/doggo"
 
-    generate_completions_from_executable(bin/"doggo", shell_parameter_format: :cobra)
+    generate_completions_from_executable(bin/"doggo", "completions")
   end
 
   test do

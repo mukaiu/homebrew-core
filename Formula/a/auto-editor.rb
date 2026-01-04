@@ -1,18 +1,19 @@
 class AutoEditor < Formula
   desc "Efficient media analysis and rendering"
   homepage "https://auto-editor.com"
-  url "https://github.com/WyattBlue/auto-editor/archive/refs/tags/29.5.0.tar.gz"
-  sha256 "f4298cd4759de8da0e1123c058aa9785bee32f25f12e7b6f0616b2ccc95c841c"
+  url "https://github.com/WyattBlue/auto-editor/archive/refs/tags/29.6.0.tar.gz"
+  sha256 "fa212ea93f114b7dfe8b196b9c68055e8123cdeda296560500b9ad384e120dee"
   license "Unlicense"
   head "https://github.com/WyattBlue/auto-editor.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "88e512d1b4ecae3e816cda074ad211126f6466f50ba8be187044ca2480cab3a6"
-    sha256 cellar: :any,                 arm64_sequoia: "024ff554b046c699776c26fddfd6ad4d8377e208ff714891c9c02019c4c5e963"
-    sha256 cellar: :any,                 arm64_sonoma:  "7408bb07452d7ec7a56991d0025909f233d65090ca76be4ca6067dffbb8da94c"
-    sha256 cellar: :any,                 sonoma:        "74f4eaab1a2feee8b8219851659a8152dad5d997f041090ddf5b7a2a4d89b57a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "4cfb31c8c548e3743af323fd85d3838f69d15718a48ffa76c7a075c050d56950"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b1ce758b579948e962ee2eb4f053961c3d8a42ef3723fce97a0b79e1835cdaec"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_tahoe:   "28907b8748ee92a014e5e62ec824980422ba07780d0e6818f1f3b9bba117e371"
+    sha256 cellar: :any,                 arm64_sequoia: "fa1a86860a2df94e679a12caa0c2f030a346aeb15460b90276f169ba33296859"
+    sha256 cellar: :any,                 arm64_sonoma:  "d587f58f716e3075be28e4acfb9b586ac3df712dbb60b827e1c2b209373e0bbb"
+    sha256 cellar: :any,                 sonoma:        "41ddc3671033f528d89d0644cc11d9d07a9acae26b0f314443e02738a5551e24"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "0def3cd3306f76824ef6c026461b1a6d86e39f591f0622cbceffb2611e0592cf"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "64acf7157012568e943769378ce55bec3cf89534283b9d0e5eaaaf747a703c50"
   end
 
   depends_on "nim" => :build
@@ -28,16 +29,9 @@ class AutoEditor < Formula
   depends_on "x264"
   depends_on "x265"
 
-  on_intel do
-    depends_on "nasm" => :build
-  end
-
   def install
-    # Install Nim dependencies
-    system "nimble", "install", "-y"
-
-    # Build auto-editor
     system "nimble", "make"
+    generate_completions_from_executable("nimble", "zshcomplete", "--silent", shells: [:zsh])
     bin.install "auto-editor"
   end
 
